@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 32px;
+  background-image: url("../assets/home.png");
+}
+
+.container {  
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.btn {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: #5f9ea0;
+  cursor: pointer;
+  transition: background 0.4s linear;
+}
+
+.btn:hover {
+  background-color: #62695E;
+}
+
+.main-wrap {
+  display: grid; 
+  grid-template-columns: max-content;  
+  grid-template-rows: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.ancients-wrap {
+  display: grid;  
+  grid-auto-flow: column;
+  grid-column: 1 / 3;  
+  justify-content: space-around;
+  padding: 20px; 
+  gap: 5%;
+}
+
+.ancient {
+  width: 270px;
+  height: 350px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  cursor: pointer;  
+  transition: transform 0.4s linear;  
+}
+
+.ancient:hover {
+  transform: scale(1.2);
+}
+
+.azathoth {
+  background-image: url("../assets/Ancients/Azathoth.png");
+}
+
+.cthulthu {
+  background-image: url("../assets/Ancients/Cthulthu.png");
+}
+
+.iog-sothoth {
+  background-image: url("../assets/Ancients/IogSothoth.png");
+}
+
+.shub-niggurath {
+  background-image: url("../assets/Ancients/ShubNiggurath.png");
+}
+
+.difficulties-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 25px;
+}
+
+.difficulties-btn {  
+  min-width: 80px;
+}
+
+.deck-wrap {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;  
+  padding: 20px;
+}
+
+.deck-btn {
+  
+}
+
+.deck-preview {
+  display: none;
+  justify-content: space-evenly;
+  align-items: center;  
+}
+
+.current-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  text-align: center;
+}
+
+.stage-wrap {
+}
+
+.stage-text {
+  font-size: 20px;
+  color: #fff;
+}
+
+.point-wrap {
+  display: flex;
+  gap: 10px;
+}
+
+.point {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.point-green {
+  background-color: #025f02;
+}
+
+.point-brown {
+  background-color: #9f7b37;
+}
+
+.point-blue {
+  background-color: #1b1be9;
+}
+
+.deck-shirt,
+.current-card {
+  width: 230px;
+  height: 300px;    
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;  
+  cursor: pointer;
+}
+
+.deck-shirt {
+  background-image: url("../assets/mythicCardBackground.png");
+}
+
+.current-card {
+  background-color: cadetblue;
+}
