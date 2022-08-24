@@ -12,10 +12,10 @@
   <main class="main-wrap container">
 
     <div class="ancients-wrap">
-      <div class="ancient azathoth"></div>
-      <div class="ancient cthulthu"></div>
-      <div class="ancient iog-sothoth"></div>
-      <div class="ancient shub-niggurath"></div>
+      <div class="ancient" id="azathoth"></div>
+      <div class="ancient" id="cthulhu"></div>
+      <div class="ancient" id="iogSothoth"></div>
+      <div class="ancient" id="shubNiggurath"></div>
     </div>
 
     <div class="difficulties-wrap">
@@ -33,13 +33,13 @@
         <div class="current-deck">
           <div class="stage-wrap">
             <span class="stage-text">Ⅰ этап</span>
-            <div class="point-wrap">
+            <div class="point-wrap" id="firstStage">
               <span class="point point-green"></span>
               <span class="point point-brown"></span>
               <span class="point point-blue"></span>
             </div>
           </div>
-          <div class="stage-wrap">
+          <div class="stage-wrap" id="secondStage">
             <span class="stage-text">Ⅱ этап</span>
             <div class="point-wrap">
               <span class="point point-green"></span>
@@ -47,7 +47,7 @@
               <span class="point point-blue"></span>
             </div>
           </div>
-          <div class="stage-wrap">
+          <div class="stage-wrap" id="thirdStage">
             <span class="stage-text">Ⅲ этап</span>
             <div class="point-wrap">
               <span class="point point-green"></span>

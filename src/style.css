@@ -68,19 +68,19 @@ body {
   transform: scale(1.2);
 }
 
-.azathoth {
+#azathoth {
   background-image: url("./assets/Ancients/Azathoth.png");
 }
 
-.cthulthu {
-  background-image: url("./assets/Ancients/Cthulthu.png");
+#cthulhu {
+  background-image: url("./assets/Ancients/Cthulhu.png");
 }
 
-.iog-sothoth {
+#iogSothoth {
   background-image: url("./assets/Ancients/IogSothoth.png");
 }
 
-.shub-niggurath {
+#shubNiggurath {
   background-image: url("./assets/Ancients/ShubNiggurath.png");
 }
 

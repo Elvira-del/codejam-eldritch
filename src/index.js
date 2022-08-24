@@ -10,11 +10,15 @@ import Ancients from "./assets/Ancients";
 import homeImage from "./assets/home.png";
 import deckImage from "./assets/mythicCardBackground.png";
 
+import ancientsData from "./data/ancients";
+import showCurrentStage from "./scripts/stage";
+import { ancients } from "./scripts/stage";
+
 const ancientsWrap = document.querySelector('.ancients-wrap');
 const difficultiesWrap = document.querySelector('.difficulties-wrap');
 const deckWrap = document.querySelector('.deck-wrap');
 
-const ancients = document.querySelectorAll('.ancient');
+
 const btnDifficulties = document.querySelectorAll('.difficulties-btn');
 
 const btnDeck = document.querySelector('.deck-btn');
@@ -22,25 +26,16 @@ const deckPreview = document.querySelector('.deck-preview');
 
 let selectedAncient;
 
-ancientsWrap.addEventListener('click', (e) => {
-  let target = e.target;
-
-  if(!target.classList.contains('ancient')) return;
-
-  showDifficultiesBtn();
-  showActiveAncient(target);
-});
-
-function showActiveAncient(currentAncient) {
+function showActiveAncient(activeAncient) {
   ancients.forEach(elem => elem.classList.remove('active'));
 
   if(selectedAncient) {
-    currentAncient.classList.remove('active'); 
+    activeAncient.classList.remove('active'); 
     selectedAncient = false;     
   };
 
   if(!selectedAncient) {
-    currentAncient.classList.add('active');
+    activeAncient.classList.add('active');
     selectedAncient = true;
   };
 };
@@ -49,23 +44,43 @@ function showDifficultiesBtn() {
   btnDifficulties.forEach(elem => elem.classList.remove('hide'));  
 };
 
+ancientsWrap.addEventListener('click', (e) => {
+  let targetAncient = e.target;
+
+  if(!targetAncient.classList.contains('ancient')) return;
+
+  showDifficultiesBtn();
+  showActiveAncient(targetAncient);
+  showCurrentStage(targetAncient);
+});
 
 
 
 
 
-const showDeckBtn = () => {
+
+
+
+function showDeckBtn() {
   deckPreview.classList.add('hide');
   btnDeck.classList.remove('hide');  
 };
 
-btnDifficulties.forEach(elem => {
-  elem.addEventListener('click', showDeckBtn);
-});
-
-const showDeckPreview = () => {
+function showDeckPreview() {
   btnDeck.classList.add('hide');
   deckPreview.classList.remove('hide');
 };
 
 btnDeck.addEventListener('click', showDeckPreview);
+
+
+
+
+
+difficultiesWrap.addEventListener('click', (e) => {
+  let targetLevel = e.target;
+
+  if(!targetLevel.classList.contains('difficulties-btn')) return;
+
+  showDeckBtn();
+});
