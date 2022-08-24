@@ -10,22 +10,49 @@ import Ancients from "./assets/Ancients";
 import homeImage from "./assets/home.png";
 import deckImage from "./assets/mythicCardBackground.png";
 
-
 const ancientsWrap = document.querySelector('.ancients-wrap');
 const difficultiesWrap = document.querySelector('.difficulties-wrap');
 const deckWrap = document.querySelector('.deck-wrap');
+
 const ancients = document.querySelectorAll('.ancient');
 const btnDifficulties = document.querySelectorAll('.difficulties-btn');
+
 const btnDeck = document.querySelector('.deck-btn');
 const deckPreview = document.querySelector('.deck-preview');
 
-const showDifficultiesBtn = () => {    
-  btnDifficulties.forEach(elem => elem.classList.remove('hide'));
+let selectedAncient;
+
+ancientsWrap.addEventListener('click', (e) => {
+  let target = e.target;
+
+  if(!target.classList.contains('ancient')) return;
+
+  showDifficultiesBtn();
+  showActiveAncient(target);
+});
+
+function showActiveAncient(currentAncient) {
+  ancients.forEach(elem => elem.classList.remove('active'));
+
+  if(selectedAncient) {
+    currentAncient.classList.remove('active'); 
+    selectedAncient = false;     
+  };
+
+  if(!selectedAncient) {
+    currentAncient.classList.add('active');
+    selectedAncient = true;
+  };
 };
 
-ancients.forEach(elem => {
-  elem.addEventListener('click', showDifficultiesBtn);
-});
+function showDifficultiesBtn() {    
+  btnDifficulties.forEach(elem => elem.classList.remove('hide'));  
+};
+
+
+
+
+
 
 const showDeckBtn = () => {
   deckPreview.classList.add('hide');

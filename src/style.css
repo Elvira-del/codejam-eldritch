@@ -52,11 +52,16 @@ body {
 .ancient {
   width: 270px;
   height: 350px;
+  border-radius: 10px;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   cursor: pointer;  
   transition: transform 0.4s linear;  
+}
+
+.ancient.active {
+  border: 2px solid #fff;
 }
 
 .ancient:hover {
@@ -89,7 +94,7 @@ body {
 }
 
 .difficulties-btn {   
-  min-width: 80px;
+  min-width: 120px;
 }
 
 .deck-wrap {
