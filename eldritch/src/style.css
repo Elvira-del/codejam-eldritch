@@ -165,7 +165,12 @@ body {
   cursor: pointer;
 }
 
-.deck-shirt {
+.deck-shirt, 
+.current-card {
+  border-radius: 10px;
+}
+
+.deck-shirt {  
   background-image: url("./assets/mythicCardBackground.png");
 }
 
