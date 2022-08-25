@@ -77,9 +77,11 @@ difficultiesWrap.addEventListener('click', (e) => {
 
   if(!targetLevel.classList.contains('difficulties-btn')) return;
 
+  currentCardPreview.style.background = '';
+
   showDeckBtn();
   createCurrentDeck(targetLevel);
-  shuffleCurrentDeck();
+  shuffleCurrentDeck();  
 });
 
 function showCurrentCardPreview() {
@@ -87,9 +89,8 @@ function showCurrentCardPreview() {
   for(let i = 0; i < shuffleDeck.length; i++) {
     for(let [key, value] of Object.entries(card)) {
       if(key === 'cardFace') currentCardPreview.style.background = `url(${value})`;
-    }
-  }  
-  
+    };
+  };  
 };
 
 deckShirt.addEventListener('click', showCurrentCardPreview)
