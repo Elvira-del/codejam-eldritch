@@ -3,6 +3,7 @@ import css from "./style.css";
 
 import difficulties from "./data/difficulties";
 import { brownCards, blueCards, greenCards } from "./data/mythicCards";
+
 import cardsGreen from "./assets/MythicCards/green";
 import cardsBrown from "./assets/MythicCards/brown";
 import cardsBlue from "./assets/MythicCards/blue";
@@ -14,10 +15,14 @@ import ancientsData from "./data/ancients";
 import showCurrentStage from "./scripts/stage";
 import { ancients } from "./scripts/stage";
 
+import { createCurrentDeck, shuffleCurrentDeck} from "./scripts/deck";
+
+import { easyDeck, normalDeck, hardDeck } from "./scripts/cards";
+const Shuffle = require('shuffle');
+
 const ancientsWrap = document.querySelector('.ancients-wrap');
 const difficultiesWrap = document.querySelector('.difficulties-wrap');
 const deckWrap = document.querySelector('.deck-wrap');
-
 
 const btnDifficulties = document.querySelectorAll('.difficulties-btn');
 
@@ -54,13 +59,6 @@ ancientsWrap.addEventListener('click', (e) => {
   showCurrentStage(targetAncient);
 });
 
-
-
-
-
-
-
-
 function showDeckBtn() {
   deckPreview.classList.add('hide');
   btnDeck.classList.remove('hide');  
@@ -83,4 +81,6 @@ difficultiesWrap.addEventListener('click', (e) => {
   if(!targetLevel.classList.contains('difficulties-btn')) return;
 
   showDeckBtn();
+  createCurrentDeck(targetLevel);
+  shuffleCurrentDeck();
 });

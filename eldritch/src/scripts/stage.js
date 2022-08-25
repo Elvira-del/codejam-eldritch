@@ -8,13 +8,28 @@ const pointsGreen = document.querySelectorAll('.point-green');
 const pointsBrown = document.querySelectorAll('.point-brown');
 const pointsBlue = document.querySelectorAll('.point-blue');
 
+export let totalCardsStages;
+
+// function calcGreenCards() {
+//   const greenCards = [...ancientsData];
+//       console.log(greenCards)
+// };
+
 function showCurrentStage(ancient) {
-  let currentAncient = ancient.getAttribute('id');
-  // let currentStage = [...stageWrap].forEach(elem => elem.getAttribute('id'));
+  let currentAncient = ancient.getAttribute('id');  
     
   ancientsData.forEach(elem => {
     if(elem.id === currentAncient) {
       // const stages = [elem.firstStage, elem.secondStage, elem.thirdStage];
+      const totalCardsFirstStage = Object.values(elem.firstStage).reduce((a, b) => a + b, 0); 
+      const totalCardsSecondStage = Object.values(elem.secondStage).reduce((a, b) => a + b, 0);
+      const totalCardsThirdStage = Object.values(elem.thirdStage).reduce((a, b) => a + b, 0); 
+      
+      // const totalGreenCards = ;
+      // const totalBrownCards = ;
+      // const totalBlueCards = ;
+
+      // calcGreenCards();
 
       pointsGreen.forEach((point, idx) => {
         if(idx === 0) point.textContent = elem.firstStage.greenCards;
@@ -33,6 +48,8 @@ function showCurrentStage(ancient) {
         if(idx === 1) point.textContent = elem.secondStage.blueCards; 
         if(idx === 2) point.textContent = elem.thirdStage.blueCards;        
       });
+
+      totalCardsStages = totalCardsFirstStage + totalCardsSecondStage + totalCardsThirdStage;      
     };    
   });  
 }
