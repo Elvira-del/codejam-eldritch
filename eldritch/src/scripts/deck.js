@@ -9,6 +9,7 @@ let randomCardNum;
 let currentDeck = [];
 let currentCard;
 let diff;
+export let shuffleDeck;
 
 function calcRandomCardNum(min, max) {
   randomCardNum = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -37,7 +38,8 @@ if(level.getAttribute('id') === 'veryEasy') {
 };
 
 function shuffleCurrentDeck() {
-  let shuffleDeck = Shuffle.shuffle({deck: currentDeck});  
+  shuffleDeck = Shuffle.shuffle({deck: currentDeck});
+  console.log(shuffleDeck)  
 }
 
 export { createCurrentDeck, shuffleCurrentDeck}

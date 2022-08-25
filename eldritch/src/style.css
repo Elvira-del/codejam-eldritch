@@ -49,7 +49,9 @@ body {
   gap: 5%;
 }
 
-.ancient {
+.ancient,
+.deck-shirt,
+.current-card {
   width: 270px;
   height: 350px;
   border-radius: 10px;
@@ -153,29 +155,10 @@ body {
 
 .point-blue {
   background-color: #1b1be9;
-}
-
-.deck-shirt,
-.current-card {
-  width: 230px;
-  height: 300px;    
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;  
-  cursor: pointer;
-}
-
-.deck-shirt, 
-.current-card {
-  border-radius: 10px;
-}
+} 
 
 .deck-shirt {  
   background-image: url("./assets/mythicCardBackground.png");
-}
-
-.current-card {
-  background-color: cadetblue;
 }
 
 .hide {

@@ -1,9 +1,8 @@
+// css
 import _ from "lodash";
 import css from "./style.css";
 
-import difficulties from "./data/difficulties";
-import { brownCards, blueCards, greenCards } from "./data/mythicCards";
-
+// images
 import cardsGreen from "./assets/MythicCards/green";
 import cardsBrown from "./assets/MythicCards/brown";
 import cardsBlue from "./assets/MythicCards/blue";
@@ -11,23 +10,25 @@ import Ancients from "./assets/Ancients";
 import homeImage from "./assets/home.png";
 import deckImage from "./assets/mythicCardBackground.png";
 
+// data
+import difficulties from "./data/difficulties";
+import { brownCards, blueCards, greenCards } from "./data/mythicCards";
 import ancientsData from "./data/ancients";
+
+// custom
 import showCurrentStage from "./scripts/stage";
 import { ancients } from "./scripts/stage";
-
-import { createCurrentDeck, shuffleCurrentDeck} from "./scripts/deck";
-
+import { shuffleDeck ,createCurrentDeck, shuffleCurrentDeck} from "./scripts/deck";
 import { easyDeck, normalDeck, hardDeck } from "./scripts/cards";
-const Shuffle = require('shuffle');
 
 const ancientsWrap = document.querySelector('.ancients-wrap');
 const difficultiesWrap = document.querySelector('.difficulties-wrap');
 const deckWrap = document.querySelector('.deck-wrap');
-
 const btnDifficulties = document.querySelectorAll('.difficulties-btn');
-
 const btnDeck = document.querySelector('.deck-btn');
 const deckPreview = document.querySelector('.deck-preview');
+const deckShirt = document.querySelector('.deck-shirt');
+const currentCardPreview = document.querySelector('.current-card');
 
 let selectedAncient;
 
@@ -71,10 +72,6 @@ function showDeckPreview() {
 
 btnDeck.addEventListener('click', showDeckPreview);
 
-
-
-
-
 difficultiesWrap.addEventListener('click', (e) => {
   let targetLevel = e.target;
 
@@ -84,3 +81,15 @@ difficultiesWrap.addEventListener('click', (e) => {
   createCurrentDeck(targetLevel);
   shuffleCurrentDeck();
 });
+
+function showCurrentCardPreview() {
+  let card = shuffleDeck.draw();  
+  for(let i = 0; i < shuffleDeck.length; i++) {
+    for(let [key, value] of Object.entries(card)) {
+      if(key === 'cardFace') currentCardPreview.style.background = `url(${value})`;
+    }
+  }  
+  
+};
+
+deckShirt.addEventListener('click', showCurrentCardPreview)
