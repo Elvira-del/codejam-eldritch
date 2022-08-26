@@ -6,40 +6,36 @@ import { easyDeck, normalDeck, hardDeck } from "../scripts/cards";
 const Shuffle = require('shuffle');
 
 let randomCardNum;
-let currentDeck = [];
+export let currentDeck = [];
 let currentCard;
 let diff;
 export let shuffleDeck;
 
-function calcRandomCardNum(min, max) {
-  randomCardNum = Math.floor(Math.random() * (max - min + 1)) + min;
+function calcDiff(total, deck) {  
+  if(currentDeck.length < totalCardsStages) {
+    diff = total - deck;  
+  } else {
+    diff = 0;
+  };    
 };
 
 function createCurrentDeck(level) {
-// Очень легкий уровень сложности: из набора берутся все карты со снежинками, если карт не хватает то добираются обычные карты
-// снежинки - easy
-// обычные - normal
+  // very easy level
+  if(level.getAttribute('id') === 'veryEasy' ) {  
+  currentDeck = currentDeck.concat(easyDeck);
 
-calcRandomCardNum(0, totalCardsStages);
+  calcDiff(totalCardsStages, currentDeck.length);
 
-if(level.getAttribute('id') === 'veryEasy') {    
-  currentDeck = easyDeck;
+  if(diff > 0) {
+    currentDeck.push(...normalDeck.slice(0, diff));    
+  };    
   
-  if(currentDeck.length < totalCardsStages) {
-    diff = totalCardsStages - currentDeck.length;
-    currentDeck.push(...normalDeck.slice(0, diff));     
-  };  
-  
-  console.log(diff)
-  
-  console.log(currentDeck.length)
-  console.log(totalCardsStages)
-};
+  };
+  shuffleCurrentDeck();
 };
 
 function shuffleCurrentDeck() {
-  shuffleDeck = Shuffle.shuffle({deck: currentDeck});
-  console.log(shuffleDeck)  
+  shuffleDeck = Shuffle.shuffle({deck: currentDeck});   
 }
 
 export { createCurrentDeck, shuffleCurrentDeck}

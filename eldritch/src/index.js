@@ -18,8 +18,11 @@ import ancientsData from "./data/ancients";
 // custom
 import showCurrentStage from "./scripts/stage";
 import { ancients } from "./scripts/stage";
-import { shuffleDeck ,createCurrentDeck, shuffleCurrentDeck} from "./scripts/deck";
+import { currentDeck } from "./scripts/deck";
+import { shuffleDeck, createCurrentDeck, shuffleCurrentDeck} from "./scripts/deck";
 import { easyDeck, normalDeck, hardDeck } from "./scripts/cards";
+
+const Shuffle = require('shuffle');
 
 const ancientsWrap = document.querySelector('.ancients-wrap');
 const difficultiesWrap = document.querySelector('.difficulties-wrap');
@@ -55,9 +58,14 @@ ancientsWrap.addEventListener('click', (e) => {
 
   if(!targetAncient.classList.contains('ancient')) return;
 
+  currentDeck.length = 0;  
+  currentCardPreview.style.background = '';
+ 
+  console.log(currentDeck)
+  
   showDifficultiesBtn();
   showActiveAncient(targetAncient);
-  showCurrentStage(targetAncient);
+  showCurrentStage(targetAncient);  
 });
 
 function showDeckBtn() {
@@ -79,14 +87,14 @@ difficultiesWrap.addEventListener('click', (e) => {
 
   currentCardPreview.style.background = '';
 
+  currentDeck.length = 0;
   showDeckBtn();
-  createCurrentDeck(targetLevel);
-  shuffleCurrentDeck();  
+  createCurrentDeck(targetLevel);   
 });
 
 function showCurrentCardPreview() {
   let card = shuffleDeck.draw();  
-  for(let i = 0; i < shuffleDeck.length; i++) {
+  for(let i = 0; i <= shuffleDeck.length; i++) {
     for(let [key, value] of Object.entries(card)) {
       if(key === 'cardFace') currentCardPreview.style.background = `url(${value})`;
     };

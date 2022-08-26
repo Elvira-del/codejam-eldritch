@@ -10,11 +10,6 @@ const pointsBlue = document.querySelectorAll('.point-blue');
 
 export let totalCardsStages;
 
-// function calcGreenCards() {
-//   const greenCards = [...ancientsData];
-//       console.log(greenCards)
-// };
-
 function showCurrentStage(ancient) {
   let currentAncient = ancient.getAttribute('id');  
     
@@ -23,13 +18,7 @@ function showCurrentStage(ancient) {
       // const stages = [elem.firstStage, elem.secondStage, elem.thirdStage];
       const totalCardsFirstStage = Object.values(elem.firstStage).reduce((a, b) => a + b, 0); 
       const totalCardsSecondStage = Object.values(elem.secondStage).reduce((a, b) => a + b, 0);
-      const totalCardsThirdStage = Object.values(elem.thirdStage).reduce((a, b) => a + b, 0); 
-      
-      // const totalGreenCards = ;
-      // const totalBrownCards = ;
-      // const totalBlueCards = ;
-
-      // calcGreenCards();
+      const totalCardsThirdStage = Object.values(elem.thirdStage).reduce((a, b) => a + b, 0);       
 
       pointsGreen.forEach((point, idx) => {
         if(idx === 0) point.textContent = elem.firstStage.greenCards;
