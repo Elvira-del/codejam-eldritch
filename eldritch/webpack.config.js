@@ -3,7 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',  
+  entry: './src/index.js',
+  devtool: 'inline-source-map',    
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Eldritch Horror',
@@ -13,7 +14,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    assetModuleFilename: 'asset/[name][ext]',
+    // assetModuleFilename: 'asset/[name][ext]',
     clean: true,
   },     
   module: {
