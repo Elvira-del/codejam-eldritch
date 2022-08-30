@@ -62,7 +62,7 @@ body {
   transition: transform 0.4s linear;  
 }
 
-.ancient.active {
+.ancient.is--active {
   border: 2px solid #fff;
 }
 
@@ -99,6 +99,10 @@ body {
   min-width: 120px;
 }
 
+.difficulties-btn.is--active {
+  border: 1px solid #fff;
+}
+
 .deck-wrap {
   display: flex;
   flex-direction: column;
@@ -107,12 +111,8 @@ body {
   padding: 20px;
 }
 
-.deck-btn {  
-}
-
 .deck-preview {
-  display: flex;
-  /* justify-content: space-evenly; */
+  display: flex;  
   align-items: center;  
   gap: 50px;
 }
@@ -122,9 +122,6 @@ body {
   flex-direction: column;
   gap: 25px;
   text-align: center;
-}
-
-.stage-wrap {
 }
 
 .stage-text {
@@ -139,8 +136,7 @@ body {
 
 .point {
   width: 40px;
-  height: 30px;
-  /* border-radius: 50%; */
+  height: 30px;  
   border: 1px solid #fff;
   color: #fff;
 }
@@ -159,8 +155,4 @@ body {
 
 .deck-shirt {  
   background-image: url("./assets/mythicCardBackground.png");
-}
-
-.hide {
-  display: none;
 }

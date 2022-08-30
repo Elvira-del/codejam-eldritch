@@ -16,8 +16,10 @@ import { brownCards, blueCards, greenCards } from "./data/mythicCards";
 import ancientsData from "./data/ancients";
 
 const ancientsWrap = document.querySelector('.ancients-wrap');
+const ancients = document.querySelectorAll('.ancient');
 const points = document.querySelectorAll('.point');
 const difficultiesWrap = document.querySelector('.difficulties-wrap');
+const difficultiesBtn = document.querySelectorAll('.difficulties-btn'); 
 const deckShirt = document.querySelector('.deck-shirt');
 const currentCardPreview = document.querySelector('.card-wrap');
 
@@ -41,7 +43,6 @@ const easyCardsShuffle = Shuffle.shuffle({deck: easyDeck});
 const normalCardsShuffle = Shuffle.shuffle({deck: normalDeck});
 const hardCardsShuffle = Shuffle.shuffle({deck: hardDeck});
 
-let randomCard;
 let totalGreen;
 let totalBrown;
 let totalBlue;
@@ -50,15 +51,13 @@ let diff;
 
 let currentDeck = [];
 
-function calcRandomCard(min, max) {
-  randomCard = Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 ancientsWrap.addEventListener('click', (e) => {
   let targetAncient = e.target.dataset.name;
-  if(!targetAncient) return;    
-  // currentDeck.length = 0;
 
+  ancients.forEach(elem => elem.classList.remove('is--active'));
+  e.target.classList.add('is--active');
+
+  if(!targetAncient) return; 
   showCurrentStage(targetAncient);  
   calcTotalCardsStages(targetAncient);
 });
@@ -89,6 +88,10 @@ function calcTotalCardsStages(ancient) {
 
 difficultiesWrap.addEventListener('click', (e) => {
   let targetLevel = e.target.dataset.level;
+
+  difficultiesBtn.forEach(btn => btn.classList.remove('is--active'));
+  e.target.classList.add('is--active');
+
   if(!targetLevel) return;
   currentDeck.length = 0;
   currentCardPreview.style.background = ``;
