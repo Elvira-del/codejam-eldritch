@@ -1,71 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <script defer src="bundle.js"></script>
-</head>Html Webpack Plugin:
-<pre>
-  Error: Child compilation failed:
-  Module not found: Error: Can't resolve 'C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch\src\index.html' in 'C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch'
-  ModuleNotFoundError: Module not found: Error: Can't resolve 'C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch\src\index.html' in 'C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch'
-      at C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch\node_modules\webpack\lib\Compilation.js:2016:28
-      at C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch\node_modules\webpack\lib\NormalModuleFactory.js:798:13
-      at eval (eval at create (C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:10:1)
-      at C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch\node_modules\webpack\lib\NormalModuleFactory.js:270:22
-      at eval (eval at create (C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch\node_modules\tapable\lib\HookCodeFactory.js:33:10), <anonymous>:9:1)
-      at C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch\node_modules\webpack\lib\NormalModuleFactory.js:434:22
-      at C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch\node_modules\webpack\lib\NormalModuleFactory.js:120:11
-      at C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch\node_modules\webpack\lib\NormalModuleFactory.js:670:25
-      at C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch\node_modules\webpack\lib\NormalModuleFactory.js:855:8
-      at C:\Users\botvi\Desktop\rs_school\codejam-eldritch\eldritch\node_modules\webpack\lib\NormalModuleFactory.js:975:5
-  
-  - Compilation.js:2016 
-    [eldritch]/[webpack]/lib/Compilation.js:2016:28
-  
-  - NormalModuleFactory.js:798 
-    [eldritch]/[webpack]/lib/NormalModuleFactory.js:798:13
-  
-  
-  - NormalModuleFactory.js:270 
-    [eldritch]/[webpack]/lib/NormalModuleFactory.js:270:22
-  
-  
-  - NormalModuleFactory.js:434 
-    [eldritch]/[webpack]/lib/NormalModuleFactory.js:434:22
-  
-  - NormalModuleFactory.js:120 
-    [eldritch]/[webpack]/lib/NormalModuleFactory.js:120:11
-  
-  - NormalModuleFactory.js:670 
-    [eldritch]/[webpack]/lib/NormalModuleFactory.js:670:25
-  
-  - NormalModuleFactory.js:855 
-    [eldritch]/[webpack]/lib/NormalModuleFactory.js:855:8
-  
-  - NormalModuleFactory.js:975 
-    [eldritch]/[webpack]/lib/NormalModuleFactory.js:975:5
-  
-  - child-compiler.js:169 
-    [eldritch]/[html-webpack-plugin]/lib/child-compiler.js:169:18
-  
-  - Compiler.js:551 finalCallback
-    [eldritch]/[webpack]/lib/Compiler.js:551:5
-  
-  - Compiler.js:577 
-    [eldritch]/[webpack]/lib/Compiler.js:577:11
-  
-  - Compiler.js:1196 
-    [eldritch]/[webpack]/lib/Compiler.js:1196:17
-  
-  
-  - Hook.js:18 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
-    [eldritch]/[tapable]/lib/Hook.js:18:14
-  
-  - Compiler.js:1192 
-    [eldritch]/[webpack]/lib/Compiler.js:1192:33
-  
-  - Compilation.js:2787 finalCallback
-    [eldritch]/[webpack]/lib/Compilation.js:2787:11
-  
-  - Compilation.js:3092 
-    [eldritch]/[webpack]/lib/Compilation.js:3092:11
-  
-  
-</pre>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eldritch Horror</title>
+<script defer src="main.js"></script></head>
+
+<body>
+  <main class="main-wrap container">
+
+    <div class="ancients-wrap">
+      <div class="ancient azathoth" data-name="azathoth"></div>
+      <div class="ancient cthulhu" data-name="cthulhu"></div>
+      <div class="ancient iogSothoth" data-name="iogSothoth"></div>
+      <div class="ancient shubNiggurath" data-name="shubNiggurath"></div>
+    </div>
+
+    <div class="difficulties-wrap">
+      <button class="difficulties-btn btn" data-level="veryEasy">Очень
+        лёгкий</button>
+      <!-- <button class="difficulties-btn btn" data-level="easy">Лёгкий</button>
+      <button class="difficulties-btn btn" data-level="middle">Средний</button>
+      <button class="difficulties-btn btn" data-level="hard">Сложный</button>
+      <button class="difficulties-btn btn" data-level="veryHard">Очень
+        сложный</button> -->
+    </div>
+
+    <div class="deck-wrap">
+      <div class="deck-preview">
+        <div class="current-deck">
+          <div class="stage-wrap">
+            <span class="stage-text">Ⅰ этап</span>
+            <div class="point-wrap">
+              <span class="point point-green" data-point-color="greenCards"
+                data-stage="firstStage"></span>
+              <span class="point point-brown" data-point-color="brownCards"
+                data-stage="firstStage"></span>
+              <span class="point point-blue" data-point-color="blueCards"
+                data-stage="firstStage"></span>
+            </div>
+          </div>
+          <div class="stage-wrap">
+            <span class="stage-text">Ⅱ этап</span>
+            <div class="point-wrap">
+              <span class="point point-green" data-point-color="greenCards"
+                data-stage="secondStage"></span>
+              <span class="point point-brown" data-point-color="brownCards"
+                data-stage="secondStage"></span>
+              <span class="point point-blue" data-point-color="blueCards"
+                data-stage="secondStage"></span>
+            </div>
+          </div>
+          <div class="stage-wrap">
+            <span class="stage-text">Ⅲ этап</span>
+            <div class="point-wrap">
+              <span class="point point-green" data-point-color="greenCards"
+                data-stage="thirdStage"></span>
+              <span class="point point-brown" data-point-color="brownCards"
+                data-stage="thirdStage"></span>
+              <span class="point point-blue" data-point-color="blueCards"
+                data-stage="thirdStage"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="deck-shirt"></div>
+
+        <div class="card-wrap"></div>
+      </div>
+    </div>
+
+  </main>
+</body>
+
+</html>
