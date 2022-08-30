@@ -51,7 +51,7 @@ body {
 
 .ancient,
 .deck-shirt,
-.current-card {
+.card-wrap {
   width: 270px;
   height: 350px;
   border-radius: 10px;
@@ -70,19 +70,19 @@ body {
   transform: scale(1.2);
 }
 
-#azathoth {
+.azathoth {
   background-image: url("./assets/Ancients/Azathoth.png");
 }
 
-#cthulhu {
+.cthulhu {
   background-image: url("./assets/Ancients/Cthulhu.png");
 }
 
-#iogSothoth {
+.iogSothoth {
   background-image: url("./assets/Ancients/IogSothoth.png");
 }
 
-#shubNiggurath {
+.shubNiggurath {
   background-image: url("./assets/Ancients/ShubNiggurath.png");
 }
 

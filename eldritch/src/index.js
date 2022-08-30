@@ -15,90 +15,141 @@ import difficulties from "./data/difficulties";
 import { brownCards, blueCards, greenCards } from "./data/mythicCards";
 import ancientsData from "./data/ancients";
 
-// custom
-import showCurrentStage from "./scripts/stage";
-import { ancients } from "./scripts/stage";
-import { currentDeck } from "./scripts/deck";
-import { shuffleDeck, createCurrentDeck, shuffleCurrentDeck} from "./scripts/deck";
-import { easyDeck, normalDeck, hardDeck } from "./scripts/cards";
+const ancientsWrap = document.querySelector('.ancients-wrap');
+const points = document.querySelectorAll('.point');
+const difficultiesWrap = document.querySelector('.difficulties-wrap');
+const deckShirt = document.querySelector('.deck-shirt');
+const currentCardPreview = document.querySelector('.card-wrap');
 
 const Shuffle = require('shuffle');
 
-const ancientsWrap = document.querySelector('.ancients-wrap');
-const difficultiesWrap = document.querySelector('.difficulties-wrap');
-const deckWrap = document.querySelector('.deck-wrap');
-const btnDifficulties = document.querySelectorAll('.difficulties-btn');
-const btnDeck = document.querySelector('.deck-btn');
-const deckPreview = document.querySelector('.deck-preview');
-const deckShirt = document.querySelector('.deck-shirt');
-const currentCardPreview = document.querySelector('.current-card');
+const totalCards = [...greenCards, ...brownCards, ...blueCards];
 
-let selectedAncient;
+const greenDeck = totalCards.filter(el => el.color === 'green');
+const brownDeck = totalCards.filter(el => el.color === 'brown');
+const blueDeck = totalCards.filter(el => el.color === 'blue');
 
-function showActiveAncient(activeAncient) {
-  ancients.forEach(elem => elem.classList.remove('active'));
+const greenCardsShuffle = Shuffle.shuffle({deck: greenDeck});
+const brownCardsShuffle = Shuffle.shuffle({deck: brownDeck});
+const blueCardsShuffle = Shuffle.shuffle({deck: blueDeck});
 
-  if(selectedAncient) {
-    activeAncient.classList.remove('active'); 
-    selectedAncient = false;     
-  };
+const easyDeck = totalCards.filter(el => el.difficulty === 'easy');
+const normalDeck = totalCards.filter(el => el.difficulty === 'normal');
+const hardDeck = totalCards.filter(el => el.difficulty === 'hard');
 
-  if(!selectedAncient) {
-    activeAncient.classList.add('active');
-    selectedAncient = true;
-  };
-};
+const easyCardsShuffle = Shuffle.shuffle({deck: easyDeck});
+const normalCardsShuffle = Shuffle.shuffle({deck: normalDeck});
+const hardCardsShuffle = Shuffle.shuffle({deck: hardDeck});
 
-function showDifficultiesBtn() {    
-  btnDifficulties.forEach(elem => elem.classList.remove('hide'));  
-};
+let randomCard;
+let totalGreen;
+let totalBrown;
+let totalBlue;
+let totalNum;
+let diff;
+
+let currentDeck = [];
+
+function calcRandomCard(min, max) {
+  randomCard = Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 ancientsWrap.addEventListener('click', (e) => {
-  let targetAncient = e.target;
+  let targetAncient = e.target.dataset.name;
+  if(!targetAncient) return;    
+  // currentDeck.length = 0;
 
-  if(!targetAncient.classList.contains('ancient')) return;
-
-  currentDeck.length = 0;  
-  currentCardPreview.style.background = '';
- 
-  console.log(currentDeck)
-  
-  showDifficultiesBtn();
-  showActiveAncient(targetAncient);
   showCurrentStage(targetAncient);  
+  calcTotalCardsStages(targetAncient);
 });
 
-function showDeckBtn() {
-  deckPreview.classList.add('hide');
-  btnDeck.classList.remove('hide');  
+function showCurrentStage(ancient) {
+  ancientsData.forEach(elem => {       
+    if(elem.id === ancient) {
+      for(let point of points) {
+        let stageNum = point.dataset.stage;
+        let pointStage = point.dataset.pointColor;
+          
+        point.textContent = elem[stageNum][pointStage];          
+      };             
+    };
+  });
 };
 
-function showDeckPreview() {
-  btnDeck.classList.add('hide');
-  deckPreview.classList.remove('hide');
+function calcTotalCardsStages(ancient) {
+  ancientsData.forEach(elem => {
+    if(elem.id === ancient) {
+      totalGreen = elem.firstStage.greenCards + elem.secondStage.greenCards + elem.thirdStage.greenCards;
+      totalBrown = elem.firstStage.brownCards + elem.secondStage.brownCards + elem.thirdStage.brownCards;
+      totalBlue = elem.firstStage.blueCards + elem.secondStage.blueCards + elem.thirdStage.blueCards;
+      totalNum = totalGreen + totalBrown + totalBlue;      
+    };
+  });
 };
-
-btnDeck.addEventListener('click', showDeckPreview);
 
 difficultiesWrap.addEventListener('click', (e) => {
-  let targetLevel = e.target;
-
-  if(!targetLevel.classList.contains('difficulties-btn')) return;
-
-  currentCardPreview.style.background = '';
-
+  let targetLevel = e.target.dataset.level;
+  if(!targetLevel) return;
   currentDeck.length = 0;
-  showDeckBtn();
-  createCurrentDeck(targetLevel);   
+  currentCardPreview.style.background = ``;
+  createVeryEasyDeck(targetLevel);
+  shuffleCurrentDeck();
 });
 
-function showCurrentCardPreview() {
-  let card = shuffleDeck.draw();  
-  for(let i = 0; i <= shuffleDeck.length; i++) {
-    for(let [key, value] of Object.entries(card)) {
-      if(key === 'cardFace') currentCardPreview.style.background = `url(${value})`;
-    };
+function createVeryEasyDeck(level) {   
+  if(level === 'veryEasy') {    
+    const veryEasyGreen = easyDeck.filter(card => card.color === 'green').slice(0, totalGreen);
+    const veryEasyBrown = easyDeck.filter(card => card.color === 'brown').slice(0, totalBrown);
+    const veryEasyBlue = easyDeck.filter(card => card.color === 'blue').slice(0, totalBlue);
+    currentDeck = currentDeck.concat(veryEasyGreen, veryEasyBrown, veryEasyBlue);
+
+    switch (veryEasyGreen.length) {
+      case 'totalGreen':        
+        break;     
+      default:        
+        diff = totalGreen - veryEasyGreen.length;
+        currentDeck = currentDeck.concat(normalDeck.filter(card => card.color === 'green').slice(0, diff));
+        break;
+    };   
+    
+    switch (veryEasyBrown.length) {
+      case 'totalBrown':        
+        break;     
+      default:        
+        diff = totalBrown - veryEasyBrown.length;
+        currentDeck = currentDeck.concat(normalDeck.filter(card => card.color === 'brown').slice(0, diff));
+        break;
+    }; 
+    
+    switch (veryEasyBlue.length) {
+      case 'totalBlue':        
+        break;     
+      default:        
+        diff = totalBlue - veryEasyBlue.length;
+        currentDeck = currentDeck.concat(normalDeck.filter(card => card.color === 'blue').slice(0, diff));
+        break;
+    }; 
+       
+    console.log('Сформирована колода для самого лёгкого уровня', currentDeck);
   };  
 };
 
-deckShirt.addEventListener('click', showCurrentCardPreview)
+let shuffleDeck;
+function shuffleCurrentDeck() {
+  shuffleDeck = Shuffle.shuffle({deck: currentDeck});   
+};
+
+function showCurrentDeck() {     
+  let shuffleCard = shuffleDeck.draw();
+  for(let i = 0; i <= shuffleDeck.length; i++) {
+    for(let [key, value] of Object.entries(shuffleCard)) {
+      if(key === 'cardFace') currentCardPreview.style.background = `url(${value})`;
+      if(key === 'id') console.log(`Вы вытянули ${value} карту`);
+    };  
+  };  
+};
+
+deckShirt.addEventListener('click', showCurrentDeck);
+
+
+

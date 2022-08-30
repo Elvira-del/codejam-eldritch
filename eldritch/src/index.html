@@ -12,56 +12,63 @@
   <main class="main-wrap container">
 
     <div class="ancients-wrap">
-      <div class="ancient" id="azathoth"></div>
-      <div class="ancient" id="cthulhu"></div>
-      <div class="ancient" id="iogSothoth"></div>
-      <div class="ancient" id="shubNiggurath"></div>
+      <div class="ancient azathoth" data-name="azathoth"></div>
+      <div class="ancient cthulhu" data-name="cthulhu"></div>
+      <div class="ancient iogSothoth" data-name="iogSothoth"></div>
+      <div class="ancient shubNiggurath" data-name="shubNiggurath"></div>
     </div>
 
     <div class="difficulties-wrap">
-      <button class="difficulties-btn btn hide" id="veryEasy">Очень
+      <button class="difficulties-btn btn" data-level="veryEasy">Очень
         лёгкий</button>
-      <button class="difficulties-btn btn hide" id="easy">Лёгкий</button>
-      <button class="difficulties-btn btn hide" id="middle">Средний</button>
-      <button class="difficulties-btn btn hide" id="hard">Сложный</button>
-      <button class="difficulties-btn btn hide" id="veryHard">Очень
+      <button class="difficulties-btn btn" data-level="easy">Лёгкий</button>
+      <button class="difficulties-btn btn" data-level="middle">Средний</button>
+      <button class="difficulties-btn btn" data-level="hard">Сложный</button>
+      <button class="difficulties-btn btn" data-level="veryHard">Очень
         сложный</button>
     </div>
 
     <div class="deck-wrap">
-      <button class="deck-btn hide btn">Сформировать колоду</button>
-
-      <div class="deck-preview hide">
+      <div class="deck-preview">
         <div class="current-deck">
           <div class="stage-wrap">
             <span class="stage-text">Ⅰ этап</span>
-            <div class="point-wrap" id="firstStage">
-              <span class="point point-green"></span>
-              <span class="point point-brown"></span>
-              <span class="point point-blue"></span>
+            <div class="point-wrap">
+              <span class="point point-green" data-point-color="greenCards"
+                data-stage="firstStage"></span>
+              <span class="point point-brown" data-point-color="brownCards"
+                data-stage="firstStage"></span>
+              <span class="point point-blue" data-point-color="blueCards"
+                data-stage="firstStage"></span>
             </div>
           </div>
-          <div class="stage-wrap" id="secondStage">
+          <div class="stage-wrap">
             <span class="stage-text">Ⅱ этап</span>
             <div class="point-wrap">
-              <span class="point point-green"></span>
-              <span class="point point-brown"></span>
-              <span class="point point-blue"></span>
+              <span class="point point-green" data-point-color="greenCards"
+                data-stage="secondStage"></span>
+              <span class="point point-brown" data-point-color="brownCards"
+                data-stage="secondStage"></span>
+              <span class="point point-blue" data-point-color="blueCards"
+                data-stage="secondStage"></span>
             </div>
           </div>
-          <div class="stage-wrap" id="thirdStage">
+          <div class="stage-wrap">
             <span class="stage-text">Ⅲ этап</span>
             <div class="point-wrap">
-              <span class="point point-green"></span>
-              <span class="point point-brown"></span>
-              <span class="point point-blue"></span>
+              <span class="point point-green" data-point-color="greenCards"
+                data-stage="thirdStage"></span>
+              <span class="point point-brown" data-point-color="brownCards"
+                data-stage="thirdStage"></span>
+              <span class="point point-blue" data-point-color="blueCards"
+                data-stage="thirdStage"></span>
             </div>
           </div>
         </div>
 
         <div class="deck-shirt"></div>
 
-        <div class="current-card"></div>
+        <div class="card-wrap"></div>
       </div>
     </div>
 
