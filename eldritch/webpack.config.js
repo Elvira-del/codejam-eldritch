@@ -12,7 +12,7 @@ module.exports = {
     }),
   ],
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     // assetModuleFilename: 'asset/[name][ext]',
     clean: true,
