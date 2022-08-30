@@ -3,8 +3,10 @@
   "description": "В рамках данного CodeJam необходимо будет создать небольшое приложение-хелпер для настольной игры \"Древний Ужас\"",
   "version": "1.0.0",
   "private": true,
+  "main": "index.js",
   "devDependencies": {
     "css-loader": "^6.7.1",
+    "html-loader": "^4.1.0",
     "html-webpack-plugin": "^5.5.0",
     "shuffle": "^0.2.5",
     "style-loader": "^3.3.1",

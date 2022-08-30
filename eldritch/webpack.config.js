@@ -6,9 +6,9 @@ module.exports = {
   entry: './src/index.js',
   devtool: 'inline-source-map',    
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Eldritch Horror',
+    new HtmlWebpackPlugin({      
       template: './src/index.html',
+      filename: './index.html',
     }),
   ],
   output: {
@@ -30,6 +30,15 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
+      },
+      {
+        test: /\.html$/,
+        use:  [
+          {
+            loader: 'html-loader',
+            options: { minimize: false },
+          }
+        ]
       },        
     ],
   },
